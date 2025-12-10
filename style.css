@@ -1,0 +1,101 @@
+/* ===== Global Page Styling ===== */
+body {
+  font-family: Arial, sans-serif;
+  background:blanchedalmond;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  background: #e65f05;
+  padding: 15px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+/* ===== Container for All Orders ===== */
+#ordersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
+/* ===== Each Order Card ===== */
+.order-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-left: 6px solid #e65f05;
+  transition: 0.3s ease;
+}
+
+/* Hover effect for better visibility */
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== Text Styling ===== */
+.order-card h3 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.order-card p {
+  font-size: 18px;
+  margin: 6px 0;
+  color: #444;
+}
+
+.order-card ul {
+  margin-left: 20px;
+  font-size: 17px;
+}
+
+.order-card ul li {
+  margin-bottom: 4px;
+}
+
+/* ===== Button Styling ===== */
+.complete-btn {
+  background: #e65f05;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.complete-btn:hover {
+  background: #c95004;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 600px) {
+  .order-card {
+    padding: 15px;
+  }
+
+  .order-card h3 {
+    font-size: 20px;
+  }
+
+  .order-card p, .order-card ul {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
