@@ -7,11 +7,56 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <style>
+    /* ===== Notification Popup ===== */
+    #notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background:#ff6600;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s, transform 0.4s;
+      transform: translateY(20px);
+      z-index: 1000;
+    }
+    #notification.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    
+    /* ===== Inline Confirmation Box ===== */
+    .confirm-box {
+      background:#ff6600;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .confirm-box button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .confirm-box .yes-btn { background:#400508; color: white; }
+    .confirm-box .no-btn { background:#400508; color: white; }
+  </style>
 </head>
 <body>
 
   <h1>Kitchen Orders</h1>
   <div id="ordersContainer"></div>
+  <div id="notification"></div>
 
   <script>
     // ===== FIREBASE CONFIG =====
@@ -55,20 +100,48 @@
           </ul>
           <p><em>Time: ${order.time}</em></p>
           <button class="complete-btn">Mark as Completed</button>
-          <hr>
         `;
         ordersContainer.appendChild(div);
 
         // ===== MARK ORDER AS COMPLETED =====
-        div.querySelector(".complete-btn").addEventListener("click", () => {
-          if (confirm(`Mark order ${order.id} as completed?`)) {
+        const completeBtn = div.querySelector(".complete-btn");
+        completeBtn.addEventListener("click", () => {
+          // Create inline confirmation box
+          const confirmBox = document.createElement("div");
+          confirmBox.classList.add("confirm-box");
+          confirmBox.innerHTML = `
+            Confirm complete order ${order.id}?
+            <div>
+              <button class="yes-btn">Yes</button>
+              <button class="no-btn">No</button>
+            </div>
+          `;
+          div.appendChild(confirmBox);
+
+          confirmBox.querySelector(".yes-btn").addEventListener("click", () => {
             db.collection("orders").doc(order.id).delete()
-              .then(() => console.log(`Order ${order.id} removed from Firebase`))
+              .then(() => showNotification(`Order ${order.id} completed!`))
               .catch(err => console.error("Error deleting order: ", err));
-          }
+            confirmBox.remove();
+          });
+
+          confirmBox.querySelector(".no-btn").addEventListener("click", () => {
+            confirmBox.remove();
+          });
         });
       });
     });
+
+    // ===== Function to show toast notification =====
+    function showNotification(message) {
+      const notif = document.getElementById("notification");
+      notif.textContent = message;
+      notif.classList.add("show");
+
+      setTimeout(() => {
+        notif.classList.remove("show");
+      }, 3000);
+    }
   </script>
 
 </body>

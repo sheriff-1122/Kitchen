@@ -1,61 +1,65 @@
-/* ===== Global Page Styling ===== */
+ /* ===== Global Page Styling ===== */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background:blanchedalmond;
   margin: 0;
   padding: 20px;
+  color: #333;
 }
 
 h1 {
   text-align: center;
-  background: #e65f05;
-  padding: 15px;
-  color:blanchedalmond;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  background: #ff6600;
+  color: #fff;
+  padding: 15px 0;
+  border-radius: 12px;
+  margin-bottom: 30px;
   font-size: 32px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* ===== Container for All Orders ===== */
+/* ===== Orders Container ===== */
 #ordersContainer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
   padding-bottom: 50px;
 }
 
 /* ===== Each Order Card ===== */
 .order-card {
-  background: #ffffff;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  border-left: 6px solid #e65f05;
-  transition: 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for better visibility */
 .order-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 /* ===== Text Styling ===== */
 .order-card h3 {
   margin-top: 0;
-  font-size: 24px;
-  color: #333;
+  font-size: 22px;
+  color: #ff6600;
 }
 
 .order-card p {
-  font-size: 18px;
+  font-size: 16px;
   margin: 6px 0;
-  color: #444;
+  line-height: 1.5;
 }
 
 .order-card ul {
   margin-left: 20px;
-  font-size: 17px;
+  padding-left: 0;
+  list-style-type: disc;
+  font-size: 15px;
 }
 
 .order-card ul li {
@@ -64,38 +68,51 @@ h1 {
 
 /* ===== Button Styling ===== */
 .complete-btn {
-  background: #e65f05;
-  color: white;
+  display: inline-block;
+  background:#ff6600;
+  color: #fff;
   border: none;
   padding: 12px 18px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   margin-top: 15px;
-  transition: 0.3s;
-  width: 100%;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .complete-btn:hover {
-  background: #c95004;
+  background:#ff6600;
+  transform: scale(1.03);
+}
+
+/* Remove any extra lines */
+.order-card hr {
+  display: none;
 }
 
 /* ===== Mobile Responsive ===== */
 @media (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+    padding: 12px 0;
+  }
+
   .order-card {
     padding: 15px;
   }
 
   .order-card h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
-  .order-card p, .order-card ul {
-    font-size: 16px;
+  .order-card p,
+  .order-card ul {
+    font-size: 14px;
   }
 
-  h1 {
-    font-size: 26px;
+  .complete-btn {
+    font-size: 14px;
+    padding: 10px 16px;
   }
 }
