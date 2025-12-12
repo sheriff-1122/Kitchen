@@ -7,16 +7,24 @@ body {
   color: #333;
 }
 
-h1 {
-  text-align: center;
-  background: #ff6600;
-  color: #fff;
-  padding: 15px 0;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  font-size: 32px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+ .page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;  
+  font-size: 28px;
+  background-color: #ff6600;
+  border-radius: 9px;
+  font-weight: bold;
 }
+
+.page-title .logo {
+  width: 100px;   
+  height: 100px;
+  object-fit: cover;
+  border-radius:9px;
+   
+}
+
 
 /* ===== Orders Container ===== */
 #ordersContainer {
