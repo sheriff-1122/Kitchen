@@ -1,9 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitchen Orders - Food Avenue</title>
+  <link rel="icon" type="image/png" href="orders.jpg">
   <link rel="stylesheet" href="style.css">
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -13,26 +15,27 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background:#ff6600;
+      background: #ff6600;
       color: white;
       padding: 15px 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s, transform 0.4s;
       transform: translateY(20px);
       z-index: 1000;
     }
+
     #notification.show {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
-    
+
     /* ===== Inline Confirmation Box ===== */
     .confirm-box {
-      background:#ff6600;
+      background: #ff6600;
       padding: 12px;
       border-radius: 8px;
       margin-top: 10px;
@@ -41,6 +44,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .confirm-box button {
       padding: 6px 12px;
       border: none;
@@ -48,10 +52,19 @@
       cursor: pointer;
       font-weight: bold;
     }
-    .confirm-box .yes-btn { background:#400508; color: white; }
-    .confirm-box .no-btn { background:#400508; color: white; }
+
+    .confirm-box .yes-btn {
+      background: #400508;
+      color: white;
+    }
+
+    .confirm-box .no-btn {
+      background: #400508;
+      color: white;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Kitchen Orders</h1>
@@ -145,4 +158,5 @@
   </script>
 
 </body>
+
 </html>
